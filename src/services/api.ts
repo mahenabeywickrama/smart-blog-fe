@@ -12,8 +12,7 @@ const PUBLIC_ENDPOINTS = ["/auth/login", "/auth/register"]
 
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken")
-  const isPublic = PUBLIC_ENDPOINTS.some
-  ((url) => config.url?.includes(url))
+  const isPublic = PUBLIC_ENDPOINTS.some((url) => config.url?.includes(url))
 
   if (token && !isPublic) {
     config.headers.Authorization = `Bearer ${token}`
