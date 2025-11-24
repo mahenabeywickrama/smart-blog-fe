@@ -1,5 +1,5 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react"
-import { getAllPost } from "../services/post"
+import { createPost, getAllPost } from "../services/post"
 
 export default function Post() {
   const [post, setPost] = useState([])
@@ -44,7 +44,7 @@ export default function Post() {
       formData.append("tags", tags)
       if (image) formData.append("image", image)
 
-      // const res = await createPost(formData)
+      await createPost(formData)
 
       await fetchData(1)
     } catch (err) {
